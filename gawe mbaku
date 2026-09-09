@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Semangat Ya!</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f0e6ed;
+            font-family: "Segoe UI", Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .card {
+            width: 380px;
+            max-width: 90%;
+            height: 420px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            text-align: center;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            margin: 5px 0 10px;
+            font-size: 16px;
+            color: #2d3436;
+        }
+
+        .opening {
+            color: #636e72;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .quote {
+            margin: 15px 0;
+            padding: 12px 15px;
+            background: #fff0f5;
+            border-radius: 8px;
+            color: #e84393;
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 11px 18px;
+            border: none;
+            border-radius: 8px;
+            background: #ff758c;
+            color: white;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ff4757;
+        }
+
+        button:active {
+            transform: scale(0.96);
+        }
+
+        .emoji {
+            position: fixed;
+            pointer-events: none;
+            z-index: 10;
+            animation: melayang 1s linear forwards;
+        }
+
+        @keyframes melayang {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(var(--geser), -140px) scale(1.2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <div class="icon">📹</div>
+
+        <h1>
+            Hai, Semangat Ya! ✨
+        </h1>
+
+        <p class="opening">
+            Mungkin sekarang lagi berat,<br>
+            tapi ingat ini buat kamu...
+        </p>
+
+        <div class="quote">
+            "Kamu harus kuat, ingat ortu<br>
+            lek butuh2 inpo gue ya."
+        </div>
+
+        <button onclick="buatAnimasiHati()">
+            Klik Buat Energi Tambahan! 🚀
+        </button>
+
+    </div>
+
+
+    <script>
+
+        function buatAnimasiHati() {
+
+            const emojis = [
+                "❤️",
+                "✨",
+                "💪",
+                "🌸",
+                "📲",
+                "⭐"
+            ];
+
+            for (let i = 0; i < 12; i++) {
+
+                const emoji = document.createElement("div");
+
+                emoji.className = "emoji";
+
+                emoji.textContent =
+                    emojis[Math.floor(Math.random() * emojis.length)];
+
+
+                // Posisi awal
+                const x =
+                    50 + Math.random() *
+                    (window.innerWidth - 100);
+
+                const y =
+                    window.innerHeight -
+                    80 -
+                    Math.random() * 70;
+
+
+                // Gerakan sedikit ke kiri/kanan
+                const geser =
+                    (Math.random() * 80 - 40) + "px";
+
+
+                // Ukuran acak
+                const ukuran =
+                    16 + Math.random() * 9;
+
+
+                emoji.style.left = x + "px";
+                emoji.style.top = y + "px";
+                emoji.style.fontSize = ukuran + "px";
+
+                emoji.style.setProperty(
+                    "--geser",
+                    geser
+                );
+
+
+                // Tambahkan ke halaman
+                document.body.appendChild(emoji);
+
+
+                // Hapus setelah animasi selesai
+                emoji.addEventListener(
+                    "animationend",
+                    () => {
+                        emoji.remove();
+                    }
+                );
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
