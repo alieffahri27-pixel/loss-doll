@@ -4,147 +4,180 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Semangat Ya!</title>
+    <title>Happy Birthday Minion :)!</title>
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
 
         body {
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #f0e6ed;
-            font-family: "Segoe UI", Arial, sans-serif;
-            overflow: hidden;
-        }
-
-        .card {
-            width: 380px;
-            max-width: 90%;
-            height: 420px;
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 12px;
             text-align: center;
-            padding: 25px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            font-family: Arial, sans-serif;
+            background-color: #fff5d6;
+            margin: 0;
+            padding: 30px 15px;
+            overflow-x: hidden;
         }
 
-        .icon {
-            font-size: 48px;
-            margin-bottom: 10px;
+        .foto img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #ffd84d;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .foto img:hover {
+            transform: scale(1.08);
         }
 
         h1 {
-            margin: 5px 0 10px;
-            font-size: 16px;
-            color: #2d3436;
+            color: #f2b705;
+            font-size: 30px;
+            margin-bottom: 20px;
         }
 
-        .opening {
-            color: #636e72;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .quote {
-            margin: 15px 0;
-            padding: 12px 15px;
-            background: #fff0f5;
-            border-radius: 8px;
-            color: #e84393;
-            font-size: 15px;
-            font-weight: bold;
-            line-height: 1.5;
+        p {
+            color: #f2b705;
+            font-size: 20px;
+            line-height: 1.6;
+            margin: 20px auto;
+            max-width: 350px;
         }
 
         button {
-            margin-top: 10px;
-            padding: 11px 18px;
+            background-color: #ffd84d;
+            color: #5c4a00;
             border: none;
-            border-radius: 8px;
-            background: #ff758c;
-            color: white;
-            font-family: inherit;
-            font-size: 14px;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 16px;
             font-weight: bold;
             cursor: pointer;
         }
 
         button:hover {
-            background: #ff4757;
+            background-color: #f2b705;
+            transform: scale(1.05);
         }
 
-        button:active {
-            transform: scale(0.96);
+        dialog {
+            width: 80%;
+            max-width: 400px;
+            border: none;
+            border-radius: 20px;
+            padding: 25px;
+            background-color: #fffdf2;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
         }
 
+        dialog::backdrop {
+            background: rgba(0, 0, 0, 0.45);
+        }
+
+        dialog h2 {
+            color: #f2b705;
+            margin-top: 0;
+        }
+
+        dialog p {
+            font-size: 18px;
+            color: #6b5600;
+        }
+
+        #tutup {
+            margin-top: 10px;
+        }
+
+        /* EMOJI JATUH */
         .emoji {
             position: fixed;
+            top: -60px;
+            font-size: 35px;
+            z-index: 9999;
             pointer-events: none;
-            z-index: 10;
-            animation: melayang 1s linear forwards;
+            animation: jatuh 4s linear forwards;
         }
 
-        @keyframes melayang {
+        @keyframes jatuh {
             0% {
-                transform: translate(0, 0) scale(1);
+                transform: translateY(-60px) rotate(0deg);
                 opacity: 1;
             }
 
             100% {
-                transform: translate(var(--geser), -140px) scale(1.2);
+                transform: translateY(110vh) rotate(360deg);
                 opacity: 0;
             }
         }
+
     </style>
 </head>
 
 <body>
 
-    <div class="card">
+    <h1>
+        🎂 Happy Birthday Minion 🎂
+        <br>
+        💛🎉🥳💛
+    </h1>
 
-        <div class="icon">📹</div>
-
-        <h1>
-            Hai, Semangat Ya! ✨
-        </h1>
-
-        <p class="opening">
-            Mungkin sekarang lagi berat,<br>
-            tapi ingat ini buat kamu...
-        </p>
-
-        <div class="quote">
-            "Kamu harus kuat, sebab aku<br>
-            hanya saudaramu hehehehe."
-        </div>
-
-        <button onclick="buatAnimasiHati()">
-            Klik Buat Energi Tambahan! 🚀
-        </button>
-
+    <div class="foto">
+        <img src="WhatsApp Image 2026-09-10 at 17.47.46.jpeg" alt="Minion">
     </div>
 
+    <p>
+        Semoga hari ini jadi hari yang paling bahagia buat kamu,
+        meskipun kita masih virtual 💛
+        <br>
+        Semoga semua hal baik datang ke kamu 🎉✨
+    </p>
+
+    <button id="tombol" type="button">
+        🎁 Klik untuk kejutan 🎁
+    </button>
+
+    <dialog id="kejutan">
+
+        <h2>🎂🎉 Surprise! 🎉🎂</h2>
+
+        <p>
+            Selamat ulang tahun, Minion! 🥳💛
+            <br><br>
+            Semoga panjang umur, sehat selalu,
+            dan semua yang kamu harapkan
+            bisa tercapai. ✨
+            <br><br>
+            Jangan lupa bahagia hari ini yaa! 😁💛
+        </p>
+
+        <button id="tutup" type="button">
+            Tutup 💛
+        </button>
+
+    </dialog>
 
     <script>
 
-        function buatAnimasiHati() {
+        const tombol = document.querySelector("#tombol");
+        const kejutan = document.querySelector("#kejutan");
+        const tutup = document.querySelector("#tutup");
 
+        tombol.addEventListener("click", function() {
+
+            kejutan.showModal();
+
+            // Emoji yang akan jatuh
             const emojis = [
-                "❤️",
-                "✨",
-                "💪",
-                "🌸",
-                "📲",
-                "⭐"
+                "🎉", "🎊", "🎂", "🥳",
+                "🎈", "💛", "✨", "🎁"
             ];
 
-            for (let i = 0; i < 12; i++) {
+            // Membuat banyak emoji
+            for (let i = 0; i < 30; i++) {
 
                 const emoji = document.createElement("div");
 
@@ -153,40 +186,28 @@
                 emoji.textContent =
                     emojis[Math.floor(Math.random() * emojis.length)];
 
-                const x =
-                    50 + Math.random() *
-                    (window.innerWidth - 100);
+                emoji.style.left =
+                    Math.random() * 100 + "vw";
 
-                const y =
-                    window.innerHeight -
-                    80 -
-                    Math.random() * 70;
+                emoji.style.animationDuration =
+                    (3 + Math.random() * 3) + "s";
 
-                const geser =
-                    (Math.random() * 80 - 40) + "px";
-
-                const ukuran =
-                    16 + Math.random() * 9;
-
-                emoji.style.left = x + "px";
-                emoji.style.top = y + "px";
-                emoji.style.fontSize = ukuran + "px";
-
-                emoji.style.setProperty(
-                    "--geser",
-                    geser
-                );
+                emoji.style.fontSize =
+                    (25 + Math.random() * 25) + "px";
 
                 document.body.appendChild(emoji);
 
-                emoji.addEventListener(
-                    "animationend",
-                    () => {
-                        emoji.remove();
-                    }
-                );
+                // Hapus emoji setelah selesai jatuh
+                setTimeout(function() {
+                    emoji.remove();
+                }, 6500);
             }
-        }
+
+        });
+
+        tutup.addEventListener("click", function() {
+            kejutan.close();
+        });
 
     </script>
 
