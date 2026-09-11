@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,14 +9,142 @@
 
     <style>
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            background-color: #fff5d6;
             margin: 0;
-            padding: 30px 15px;
+            font-family: Arial, sans-serif;
+            background: #fff5d6;
+            text-align: center;
             overflow-x: hidden;
         }
+
+
+        /* =========================
+           HALAMAN KADO
+        ========================= */
+
+        #halamanKado {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            transition: 0.8s;
+        }
+
+        #halamanKado h1 {
+            color: #f2b705;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        #halamanKado p {
+            color: #6b5600;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+
+        /* KADO */
+
+        .kado {
+            font-size: 130px;
+            cursor: pointer;
+            animation: goyang 1.5s infinite;
+            user-select: none;
+        }
+
+        @keyframes goyang {
+
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            25% {
+                transform: rotate(-8deg) scale(1.05);
+            }
+
+            50% {
+                transform: rotate(8deg) scale(1.05);
+            }
+
+            75% {
+                transform: rotate(-5deg) scale(1.05);
+            }
+
+            100% {
+                transform: rotate(0deg) scale(1);
+            }
+
+        }
+
+
+        /* TOMBOL BUKA */
+
+        #bukaKado {
+            background: #ffd84d;
+            color: #5c4a00;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+            transition: 0.3s;
+        }
+
+        #bukaKado:hover {
+            transform: scale(1.08);
+            background: #f2b705;
+        }
+
+
+        /* =========================
+           HALAMAN ULANG TAHUN
+        ========================= */
+
+        #halamanBirthday {
+            display: none;
+            min-height: 100vh;
+            padding: 30px 15px;
+            opacity: 0;
+        }
+
+        #halamanBirthday.muncul {
+            display: block;
+            animation: muncul 1s ease forwards;
+        }
+
+        @keyframes muncul {
+
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        /* JUDUL */
+
+        h1 {
+            color: #f2b705;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+
+        /* FOTO */
 
         .foto img {
             width: 150px;
@@ -24,31 +153,31 @@
             border-radius: 50%;
             border: 5px solid #ffd84d;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: 0.3s;
             display: block;
             margin: 0 auto;
+            transition: 0.3s;
         }
 
         .foto img:hover {
             transform: scale(1.08);
         }
 
-        h1 {
-            color: #f2b705;
-            font-size: 30px;
-            margin-bottom: 20px;
-        }
 
-        p {
+        /* PESAN */
+
+        .pesan {
             color: #f2b705;
             font-size: 20px;
             line-height: 1.6;
-            margin: 20px auto;
+            margin: 25px auto;
             max-width: 350px;
         }
 
-        button {
-            background-color: #ffd84d;
+
+        /* TOMBOL KEJUTAN */
+
+        #tombol {
+            background: #ffd84d;
             color: #5c4a00;
             border: none;
             padding: 12px 25px;
@@ -56,12 +185,18 @@
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
+            transition: 0.3s;
         }
 
-        button:hover {
-            background-color: #f2b705;
+        #tombol:hover {
+            background: #f2b705;
             transform: scale(1.05);
         }
+
+
+        /* =========================
+           DIALOG KEJUTAN
+        ========================= */
 
         dialog {
             width: 80%;
@@ -69,7 +204,7 @@
             border: none;
             border-radius: 20px;
             padding: 25px;
-            background-color: #fffdf2;
+            background: #fffdf2;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
         }
@@ -86,23 +221,35 @@
         dialog p {
             font-size: 18px;
             color: #6b5600;
+            line-height: 1.5;
         }
 
         #tutup {
             margin-top: 10px;
+            background: #ffd84d;
+            color: #5c4a00;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
         }
 
-        /* EMOJI JATUH */
+
+        /* =========================
+           EMOJI JATUH
+        ========================= */
+
         .emoji {
             position: fixed;
             top: -60px;
-            font-size: 35px;
             z-index: 9999;
             pointer-events: none;
             animation: jatuh 4s linear forwards;
         }
 
         @keyframes jatuh {
+
             0% {
                 transform: translateY(-60px) rotate(0deg);
                 opacity: 1;
@@ -112,104 +259,271 @@
                 transform: translateY(110vh) rotate(360deg);
                 opacity: 0;
             }
+
         }
 
     </style>
 </head>
 
+
 <body>
 
-    <h1>
-        🎂 Happy Birthday Minion 🎂
+
+    <!-- =========================
+         HALAMAN AWAL / KADO
+    ========================= -->
+
+    <section id="halamanKado">
+
+        <h1>
+            🎁 Ada sesuatu buat kamu 🎁
+        </h1>
+
+        <p>
+            Coba buka kadonya dulu 😁
+        </p>
+
+        <div class="kado" id="kado">
+            🎁
+        </div>
+
         <br>
-        💛🎉🥳💛
-    </h1>
 
-    <div class="foto">
-        <img src="WhatsApp Image 2026-09-10 at 17.47.46.jpeg" alt="Minion">
-    </div>
+        <button id="bukaKado">
+            🎁 Tekan untuk buka 🎁
+        </button>
 
-    <p>
-        Semoga hari ini jadi hari yang paling bahagia buat kamu,
-        meskipun kita masih virtual 💛
-        <br>
-        Semoga semua hal baik datang ke kamu 🎉✨
-    </p>
+    </section>
 
-    <button id="tombol" type="button">
-        🎁 Klik untuk kejutan 🎁
-    </button>
+
+
+    <!-- =========================
+         HALAMAN BIRTHDAY
+    ========================= -->
+
+    <section id="halamanBirthday">
+
+        <h1>
+            🎂 Happy Birthday Minion ke 17 🎂
+            <br>
+            💛🎉🥳💛
+        </h1>
+
+
+        <!-- FOTO -->
+
+        <div class="foto">
+
+            <img src="WhatsApp Image 2026-09-10 at 17.47.46.jpeg" alt="Minion">
+
+        </div>
+
+
+        <!-- PESAN -->
+
+        <div class="pesan">
+
+            Semoga hari ini jadi hari yang paling
+            bahagia buat kamu, meskipun kita masih
+            virtual 💛
+
+            <br><br>
+
+            Semoga semua hal baik datang ke kamu
+            🎉✨
+
+        </div>
+
+
+        <!-- TOMBOL KEJUTAN -->
+
+        <button id="tombol" type="button">
+
+            🎁 Klik untuk kejutan 🎁
+
+        </button>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         KOTAK KEJUTAN
+    ========================= -->
 
     <dialog id="kejutan">
 
-        <h2>🎂🎉 Surprise! 🎉🎂</h2>
+        <h2>
+            🎂🎉 Surprise! 🎉🎂
+        </h2>
 
         <p>
+
             Selamat ulang tahun, Minion! 🥳💛
+
             <br><br>
-            Semoga panjang umur, sehat selalu,
+
+            Semoga panjang umur,
+            sehat selalu,
             dan semua yang kamu harapkan
             bisa tercapai. ✨
+
             <br><br>
+
             Jangan lupa bahagia hari ini yaa! 😁💛
+
+            <br><br>
+
+            maaf ya aku belum bisa menemuimu minion
+            
         </p>
 
         <button id="tutup" type="button">
+
             Tutup 💛
+
         </button>
 
     </dialog>
 
+
+
     <script>
 
-        const tombol = document.querySelector("#tombol");
-        const kejutan = document.querySelector("#kejutan");
-        const tutup = document.querySelector("#tutup");
+
+        /* =========================
+           TOMBOL BUKA KADO
+        ========================= */
+
+        const bukaKado =
+            document.querySelector("#bukaKado");
+
+        const halamanKado =
+            document.querySelector("#halamanKado");
+
+        const halamanBirthday =
+            document.querySelector("#halamanBirthday");
+
+
+        bukaKado.addEventListener("click", function() {
+
+            /* Sembunyikan halaman kado */
+
+            halamanKado.style.display = "none";
+
+
+            /* Tampilkan halaman birthday */
+
+            halamanBirthday.classList.add("muncul");
+
+        });
+
+
+
+        /* Kado juga bisa ditekan */
+
+        document.querySelector("#kado")
+            .addEventListener("click", function() {
+
+                bukaKado.click();
+
+            });
+
+
+
+        /* =========================
+           DIALOG KEJUTAN
+        ========================= */
+
+        const tombol =
+            document.querySelector("#tombol");
+
+        const kejutan =
+            document.querySelector("#kejutan");
+
+        const tutup =
+            document.querySelector("#tutup");
+
 
         tombol.addEventListener("click", function() {
 
             kejutan.showModal();
 
-            // Emoji yang akan jatuh
+
+            /* Daftar emoji */
+
             const emojis = [
-                "🎉", "🎊", "🎂", "🥳",
-                "🎈", "💛", "✨", "🎁"
+                "🎉",
+                "🎊",
+                "🎂",
+                "🥳",
+                "🎈",
+                "💛",
+                "✨",
+                "🎁"
             ];
 
-            // Membuat banyak emoji
+
+            /* Membuat emoji jatuh */
+
             for (let i = 0; i < 30; i++) {
 
-                const emoji = document.createElement("div");
+                const emoji =
+                    document.createElement("div");
+
 
                 emoji.className = "emoji";
 
+
                 emoji.textContent =
-                    emojis[Math.floor(Math.random() * emojis.length)];
+                    emojis[
+                        Math.floor(
+                            Math.random() * emojis.length
+                        )
+                    ];
+
 
                 emoji.style.left =
                     Math.random() * 100 + "vw";
 
+
                 emoji.style.animationDuration =
                     (3 + Math.random() * 3) + "s";
+
 
                 emoji.style.fontSize =
                     (25 + Math.random() * 25) + "px";
 
+
                 document.body.appendChild(emoji);
 
-                // Hapus emoji setelah selesai jatuh
+
                 setTimeout(function() {
+
                     emoji.remove();
+
                 }, 6500);
+
             }
 
         });
 
+
+
+        /* =========================
+           TOMBOL TUTUP
+        ========================= */
+
         tutup.addEventListener("click", function() {
+
             kejutan.close();
+
         });
+
 
     </script>
 
 </body>
+
 </html>
